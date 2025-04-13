@@ -1,0 +1,59 @@
+/* Style for the fighter list container */
+.fighter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* Style for individual fighter cards */
+.fighter-card,
+.team-fighter-card {
+  border: 2px solid pink;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fighter-card img,
+.team-fighter-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Fighter name styling */
+.fighter-card h3,
+.team-fighter-card h3 {
+  font-size: 1.1rem;
+  color: black;
+}
+
+/* Add and Remove buttons */
+.fighter-card button,
+.team-fighter-card button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: red;
+}
+
+.team {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.team h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #444;
+}
