@@ -90,37 +90,32 @@ const App = () => {
   const handleAddFighter = (fighter) => {
     if (money < fighter.price) {
       console.log("Not Enough Money");
+      return;
     }
-
     //to add fighter to team
     setTeam((prevTeam) => [...prevTeam, fighter]);
-
+    //deduct fighter.price from money
+    setMoney((prevMoney) => prevMoney - fighter.price);
     //to remove fighter from zombieFighters
     const updatedFighters = zombieFighters.filter(
       (zombie) => zombie.id !== fighter.id
     );
     setZombieFighters(updatedFighters);
-
-    //deduct fighter.price from money
-    setMoney((prevMoney) => prevMoney - fighter.price);
   };
 
   const handleRemoveFighter = (fighter) => {
     setTeam((prevTeam) =>
       prevTeam.filter((teamFighter) => teamFighter.id !== fighter.id)
     );
-
-    setZombieFighters((prevFighters) => [...prevFighters, fighter]);
-
     setMoney((prevMoney) => prevMoney + fighter.price);
+    setZombieFighters((prevFighters) => [...prevFighters, fighter]);
   };
 
   const totalStrength = team.reduce(
-    (acc, fighter) => acc + fighter.strength,
+    (sum, fighter) => sum + fighter.strength,
     0
   );
-
-  const totalAgility = team.reduce((acc, fighter) => acc + fighter.agility, 0);
+  const totalAgility = team.reduce((sum, fighter) => sum + fighter.agility, 0);
 
   return (
     <div>
@@ -139,29 +134,32 @@ const App = () => {
             <p>Agility: {fighter.agility}</p>
 
             <button onClick={() => handleAddFighter(fighter)}>Add</button>
-            <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
           </div>
         ))}
       </div>
-
       <div className="team">
         <h2>My Team</h2>
         {team.length === 0 ? (
-          <p>Pick some team members</p>
+          <h2>(Pick some team members)</h2>
         ) : (
           team.map((fighter) => {
-            <div key={fighter.id} className="team-fighter-card">
-              <h3>{fighter.name}</h3>
-              <img src={fighter.img} alt={`${fighter.name} icon`} />
-              <p>Price: ${fighter.price}</p>
-              <p>Strength: {fighter.strength}</p>
-              <p>Agility: {fighter.agility}</p>
-            </div>;
+            return (
+              <div key={fighter.id} className="team-fighter-card">
+                <h3>{fighter.name}</h3>
+                <img src={fighter.img} alt={`${fighter.name} icon`} />
+                <p>Price: ${fighter.price}</p>
+                <p>Strength: {fighter.strength}</p>
+                <p>Agility: {fighter.agility}</p>
+
+                <button onClick={() => handleRemoveFighter(fighter)}>
+                  Remove
+                </button>
+              </div>
+            );
           })
         )}
       </div>
     </div>
   );
 };
-
 export default App;

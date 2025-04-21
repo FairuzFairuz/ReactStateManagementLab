@@ -10,16 +10,18 @@
 /* Style for individual fighter cards */
 .fighter-card,
 .team-fighter-card {
-  border: 2px solid pink;
+  border: 2px white;
   border-radius: 10px;
-  background-color: white;
+  background-color: black;
   padding: 10px;
   text-align: center;
   width: 250px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: white;
 }
 
 .fighter-card img,
@@ -33,8 +35,8 @@
 /* Fighter name styling */
 .fighter-card h3,
 .team-fighter-card h3 {
-  font-size: 1.1rem;
-  color: black;
+  font-size: 1.5rem;
+  color: white;
 }
 
 /* Add and Remove buttons */
@@ -47,13 +49,16 @@
 }
 
 .team {
-  margin-top: 30px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .team h2 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.5rem;
-  color: #444;
+  color: black;
 }
